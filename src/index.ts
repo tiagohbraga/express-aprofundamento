@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
-import { accounts } from './database'
-import {ACCOUNT_TYPE} from './types'
+import { accounts, petShops } from './database'
+import {ACCOUNT_TYPE, TPet} from './types'
+import { send } from 'process'
 
 const app = express()
 
@@ -68,4 +69,35 @@ app.put("/accounts/:id", (req: Request, res: Response)=>{
         account.type = newType || account.type
     }
     res.status(200).send('Item atualizado com sucesso!')
+})
+
+app.get("/petShops", (req: Request, res: Response)=>{
+    res.send(petShops)
+})
+
+app.get("/petShops/:id", (req: Request, res: Response)=>{
+    const id =req.params.id
+
+    const result = petShops.find((petShop)=>{
+        return petShop.id === id
+    })
+    res.status(200).send(result)
+})
+
+app.post("/petShops/:id", (req: Request, res: Response)=>{
+
+    const id = req.body.id as string | undefined
+    const name = req.body.name as string | undefined
+    const raca = req.body.raca as string |undefined
+    const peso = req.body.peso as number | undefined
+
+    const newPet : TPet = {
+        id,
+        name,
+        raca,
+        peso
+    }
+    petShops.push(newPet)
+
+    res.status(200).send("Animal adicionado com sucesso!")
 })

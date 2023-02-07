@@ -1,4 +1,4 @@
-import { ACCOUNT_TYPE, TAccount } from "./types";
+import { ACCOUNT_TYPE, TAccount, TPet } from "./types";
 
 export const accounts: TAccount[] = [
     {
@@ -18,5 +18,14 @@ export const accounts: TAccount[] = [
         ownerName: "Fulana",
         balance: 20000,
         type: ACCOUNT_TYPE.PLATINUM
+    }
+]
+
+export const petShops: TPet[] = [
+    {
+        id: "p001",
+        name: "Thor",
+        raca: "vira-lata",
+        peso: 15
     }
 ]

@@ -1,3 +1,5 @@
+import { StringDecoder } from "string_decoder"
+
 export enum ACCOUNT_TYPE {
     BRONZE = "Bronze",
     SILVER = "Prata",
@@ -11,4 +13,11 @@ export type TAccount = {
     ownerName: string,
     balance: number,
     type: ACCOUNT_TYPE
+}
+
+export type TPet = {
+    id: string,
+    name: string,
+    raca: string,
+    peso: number
 }
